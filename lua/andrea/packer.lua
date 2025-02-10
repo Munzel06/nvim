@@ -48,11 +48,17 @@ return require('packer').startup(function(use)
 
   use 'lervag/vimtex'
 
-  -- install without yarn or npm
-  use({
+  use {
       "iamcco/markdown-preview.nvim",
-      run = function() vim.fn["mkdp#util#install"]() end,
-  })
+      run = "cd app && npm install",
+      setup = function()
+          vim.g.mkdp_auto_start = 0
+          vim.g.mkdp_open_to_the_world = 1
+          vim.g.mkdp_port = 8202
+          vim.g.mkdp_browser = ""
+      end
+  }
+
 
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 

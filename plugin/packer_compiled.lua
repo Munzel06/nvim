@@ -116,7 +116,8 @@ _G.packer_plugins = {
   },
   ["markdown-preview.nvim"] = {
     loaded = true,
-    path = "/home/andrea/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    needs_bufread = false,
+    path = "/home/andrea/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
   ["mason-lspconfig.nvim"] = {
@@ -188,6 +189,13 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Setup for: markdown-preview.nvim
+time([[Setup for markdown-preview.nvim]], true)
+try_loadstring("\27LJ\2\nê\1\0\0\2\0\a\0\0176\0\0\0009\0\1\0)\1\0\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\3\0006\0\0\0009\0\1\0)\1\n =\1\4\0006\0\0\0009\0\1\0'\1\6\0=\1\5\0K\0\1\0\5\17mkdp_browser\14mkdp_port\27mkdp_open_to_the_world\20mkdp_auto_start\6g\bvim\0", "setup", "markdown-preview.nvim")
+time([[Setup for markdown-preview.nvim]], false)
+time([[packadd for markdown-preview.nvim]], true)
+vim.cmd [[packadd markdown-preview.nvim]]
+time([[packadd for markdown-preview.nvim]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
