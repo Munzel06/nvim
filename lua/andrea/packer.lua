@@ -48,19 +48,18 @@ return require('packer').startup(function(use)
 
   use 'lervag/vimtex'
 
-  use {
+    use {
       "iamcco/markdown-preview.nvim",
       run = "cd app && npm install",
-      setup = function()
+      ft = { "markdown" },
+      config = function()
           vim.g.mkdp_auto_start = 0
           vim.g.mkdp_open_to_the_world = 1
           vim.g.mkdp_port = 8202
           vim.g.mkdp_browser = ""
+          vim.g.mkdp_filetypes = { "markdown" }
       end
   }
-
-
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   -- nvim v0.7.2
   use({

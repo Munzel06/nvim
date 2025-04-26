@@ -10,7 +10,7 @@ vim.opt.shiftwidth = 4
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = true -- Zeilenumbrechen
+vim.opt.wrap = false -- Zeilenumbrechen
 
 vim.opt.swapfile = false
 vim.opt.backup = false

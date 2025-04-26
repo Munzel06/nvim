@@ -14,29 +14,33 @@ end)
 -- Mason für LSP-Installation einrichten
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = {},
+  ensure_installed = { "lua_ls", "pyright","clangd", "texlab"}, -- Automatische Installation
   handlers = {
-    lsp_zero.default_setup,
+    function(server_name)
+      require("lspconfig")[server_name].setup(lsp_zero.build_options(server_name, {}))
+    end,
   },
 })
 
 lsp_zero.setup()
+
+-- Autocompletion Setup mit nvim-cmp
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
-	mapping = {
-		['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
-		['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
-		['<CR>'] = cmp.mapping.confirm({ select = true }),
-		['<C-Space>'] = cmp.mapping.complete(),
-	},
+  mapping = {
+    ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-Space>'] = cmp.mapping.complete(),
+  },
 
-	sources = {
-		{ name = 'nvim_lsp' },
-		{ name = 'buffer' },
-		{ name = 'path' },
-		{ name = 'luasnip' },
-	}
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'luasnip' },
+  }
 })
 
